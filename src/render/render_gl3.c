@@ -775,8 +775,11 @@ void mjr_render(mjrRect viewport, mjvScene* scn, const mjrContext* con) {
 
   // clear, with scissor
   glScissor(viewport.left, viewport.bottom, viewport.width, viewport.height);
-  glEnable(GL_SCISSOR_TEST);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  if (scn->flags[mjRND_CLEAR_BG])
+  {
+      glEnable(GL_SCISSOR_TEST);
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  }
   glDisable(GL_SCISSOR_TEST);
 
   // determine stereo; quadbuffered reverts to sidebyside if hardware not available

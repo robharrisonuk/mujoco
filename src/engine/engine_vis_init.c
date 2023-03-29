@@ -104,7 +104,8 @@ const char* mjRNDSTRING[mjNRNDFLAG][3] = {
   {"Haze",        "1", "/"},
   {"Segment",     "0", ","},
   {"Id Color",    "0", "."},
-  {"Cull Face",   "1", ""}
+  {"Cull Face",   "1", ""},
+  {"Clear BG",    "1", ""}
 };
 
 
