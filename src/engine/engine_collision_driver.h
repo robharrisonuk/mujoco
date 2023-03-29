@@ -22,13 +22,22 @@
 #ifdef __cplusplus
 extern "C" {
 #else
-#include <stdalign.h>
+#ifndef _WIN32
+	#include <stdalign.h>
+#endif
 #endif
 
+#ifndef _WIN32
 struct mjCollisionTree_ {
   alignas(mjtNum) int node1;
   int node2;
 };
+#else
+__declspec(align(8)) struct mjCollisionTree_ {
+  int node1;
+  int node2;
+};
+#endif
 typedef struct mjCollisionTree_ mjCollisionTree;
 
 // collision function pointers and max contact pairs
