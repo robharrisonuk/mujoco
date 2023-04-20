@@ -778,7 +778,12 @@ void mjr_render(mjrRect viewport, mjvScene* scn, const mjrContext* con) {
   if (scn->flags[mjRND_CLEAR_BG])
   {
       glEnable(GL_SCISSOR_TEST);
-      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+      int flags = GL_DEPTH_BUFFER_BIT;
+      if (scn->flags[mjRND_CLEAR_BG] != 2)
+          flags |= GL_COLOR_BUFFER_BIT;
+
+      glClear(flags);
   }
   glDisable(GL_SCISSOR_TEST);
 
